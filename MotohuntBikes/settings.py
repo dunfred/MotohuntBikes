@@ -12,6 +12,27 @@ BOT_NAME = "MotohuntBikes"
 SPIDER_MODULES = ["MotohuntBikes.spiders"]
 NEWSPIDER_MODULE = "MotohuntBikes.spiders"
 
+FEED_EXPORT_FIELDS = [
+   'vin',
+   'make',
+   'model',
+   'trim',
+   'year',
+   'price',
+   'condition',
+   'dealer',
+   'dealer_link',
+   'dealer_number',
+   'description',
+   'mileage',
+   'color',
+   'location',
+   'engine',
+   'fuel_type',
+   'body_type',
+   'car_url',
+   'image_links',
+]
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "MotohuntBikes (+http://www.yourdomain.com)"
