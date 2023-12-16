@@ -18,6 +18,36 @@ class RockAutoSpider(scrapy.Spider):
     # Custom attrs
     site_name = "RockAuto"
 
+    custom_settings = {
+        "DOWNLOAD_DELAY": 0,
+        "DOWNLOAD_TIMEOUT": 10,
+        "RANDOMIZE_DOWNLOAD_DELAY": True,
+        "REACTOR_THREADPOOL_MAXSIZE": 10,
+        "CONCURRENT_REQUESTS": 3,
+        "CONCURRENT_REQUESTS_PER_DOMAIN": 3,
+        "CONCURRENT_REQUESTS_PER_IP": 3,
+        "AUTOTHROTTLE_ENABLED": True,
+        "AUTOTHROTTLE_START_DELAY": 1,
+        "AUTOTHROTTLE_MAX_DELAY": 0.25,
+        "AUTOTHROTTLE_TARGET_CONCURRENCY": 10,
+        "AUTOTHROTTLE_DEBUG": True,
+        "RETRY_ENABLED": True,
+        "RETRY_TIMES": 3,
+        "RETRY_HTTP_CODES": [500, 502, 503, 504, 400, 401, 403, 404, 405, 406, 407, 408, 409, 410, 429],
+        "LOG_ENABLED": True,
+        "LOG_LEVEL": "DEBUG",
+        'ZYTE_SMARTPROXY_ENABLED': True,
+        'ZYTE_SMARTPROXY_APIKEY': '2cf4c91d781f4dd9b4e5ecc4b6c2b24f',
+        'ZYTE_SMARTPROXY_URL': 'http://2cf4c91d781f4dd9b4e5ecc4b6c2b24f:@proxy.crawlera.com:8011/',
+
+        'DOWNLOADER_MIDDLEWARES': {
+            'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
+            # 'scrapy_user_agents.middlewares.RandomUserAgentMiddleware': 400,
+            'scrapy_zyte_smartproxy.ZyteSmartProxyMiddleware': 610,
+
+        },
+    }
+
     def parse(self, response):        
         make_elems = response.xpath('//*[starts-with(@id, "navhref")]') #.getall()
         print('TOTAL MAKES:', len(make_elems))
