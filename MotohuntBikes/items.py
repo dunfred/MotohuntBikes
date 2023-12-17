@@ -31,3 +31,15 @@ class MotohuntbikesItem(scrapy.Item):
 class RockAutoItem(scrapy.Item):
     # define the fields for your item here like:
     make    = scrapy.Field()
+    year    = scrapy.Field()
+    model   = scrapy.Field()
+    engine  = scrapy.Field()
+    part_type       = scrapy.Field()
+    part_sub_type   = scrapy.Field()
+
+    price       = scrapy.Field()
+    part_images = scrapy.Field()
+    part_manufacturer   = scrapy.Field()
+    part_number = scrapy.Field()
+    part_url    = scrapy.Field()
+    part_name   = scrapy.Field()
